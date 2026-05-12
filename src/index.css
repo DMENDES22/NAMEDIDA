@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-military-950: #020617;
+  --color-military-900: #0f172a;
+  --color-military-800: #1e293b;
+  --color-military-accent: #FFC107;
+  --color-military-success: #22c55e;
+  --color-military-warning: #f59e0b;
+}
+
+@layer base {
+  body {
+    @apply bg-military-950 text-slate-200 font-sans antialiased selection:bg-military-accent/30;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-white uppercase;
+  }
+}
+
+@layer components {
+  .tactical-card {
+    @apply bg-military-900/50 border border-slate-800 rounded-none overflow-hidden relative shadow-lg shadow-black/20;
+  }
+  
+  .tactical-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-military-accent opacity-0 transition-opacity;
+  }
+  
+  .tactical-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .tactical-input {
+    @apply bg-military-900 border border-slate-700 text-slate-100 px-3 py-2 focus:ring-1 focus:ring-military-accent focus:border-military-accent outline-none font-mono rounded-none;
+  }
+  
+  .tactical-btn-primary {
+    @apply bg-military-accent hover:bg-military-accent/90 text-white px-4 py-2 uppercase font-bold tracking-widest text-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2;
+  }
+
+  .tactical-btn-outline {
+    @apply border border-slate-700 hover:border-military-accent text-slate-300 hover:text-white px-4 py-2 uppercase font-bold tracking-widest text-xs transition-all flex items-center justify-center gap-2;
+  }
+}
+
